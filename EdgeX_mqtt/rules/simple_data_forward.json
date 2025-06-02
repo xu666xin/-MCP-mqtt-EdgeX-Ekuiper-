@@ -1,0 +1,29 @@
+{
+  "id": "temperature_forward",
+  "sql": "SELECT temperature FROM classroom_stream WHERE temperature > 0",
+  "actions": [
+    {
+      "mqtt": {
+        "server": "ssl://zd89891c.ala.cn-hangzhou.emqxsl.cn:8883",
+        "topic": "classroom/temperature",
+        "username": "xu666xin",
+        "password": "123456",
+        "clientId": "edgex_temp_forward",
+        "protocolVersion": "3.1.1",
+        "insecureSkipVerify": true,
+        "qos": 1
+      }
+    },
+    {
+      "log": {
+        "format": "Temperature data sent to MQTT: {{json .}}"
+      }
+    }
+  ],
+  "options": {
+    "isEventTime": false,
+    "concurrency": 1,
+    "bufferLength": 1024,
+    "qos": 0
+  }
+}

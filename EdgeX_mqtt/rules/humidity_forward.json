@@ -1,0 +1,29 @@
+{
+  "id": "humidity_forward",
+  "sql": "SELECT humidity FROM classroom_stream WHERE humidity > 0",
+  "actions": [
+    {
+      "mqtt": {
+        "server": "ssl://zd89891c.ala.cn-hangzhou.emqxsl.cn:8883",
+        "topic": "classroom/humidity",
+        "username": "xu666xin",
+        "password": "123456",
+        "clientId": "edgex_humidity_forward",
+        "protocolVersion": "3.1.1",
+        "insecureSkipVerify": true,
+        "qos": 1
+      }
+    },
+    {
+      "log": {
+        "format": "Humidity data sent to MQTT: {{json .}}"
+      }
+    }
+  ],
+  "options": {
+    "isEventTime": false,
+    "concurrency": 1,
+    "bufferLength": 1024,
+    "qos": 0
+  }
+}

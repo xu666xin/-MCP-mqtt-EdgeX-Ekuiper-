@@ -1,0 +1,9 @@
+# EMQX Cloud配置
+default:
+  servers: ["ssl://zd89891c.ala.cn-hangzhou.emqxsl.cn:8883"]
+  username: "xu666xin"
+  password: "123456"
+  protocolVersion: "3.1.1"
+  insecureSkipVerify: true
+  qos: 1
+  bufferLength: 1024

@@ -1,0 +1,3 @@
+{
+  "sql": "CREATE STREAM ac_control_stream () WITH (FORMAT=\"json\", TYPE=\"mqtt\", DATASOURCE=\"classroom/control/ac\", SHARED=\"false\")"
+}

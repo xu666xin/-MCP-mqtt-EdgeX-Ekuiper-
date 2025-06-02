@@ -1,0 +1,22 @@
+{
+  "id": "ac_temp_status",
+  "sql": "SELECT target_temperature FROM classroom_stream WHERE target_temperature > 0",
+  "actions": [
+    {
+      "mqtt": {
+        "server": "ssl://zd89891c.ala.cn-hangzhou.emqxsl.cn:8883",
+        "topic": "classroom/ac/temperature/status",
+        "username": "xu666xin",
+        "password": "123456",
+        "protocolVersion": "3.1.1",
+        "insecureSkipVerify": true,
+        "dataTemplate": "{\"device_id\": \"classroom-ac\", \"target_temperature\": {{index . 0 \"target_temperature\"}}, \"unit\": \"°C\", \"timestamp\": \"{{now}}\"}"
+      }
+    },
+    {
+      "log": {
+        "format": "AC temperature status sent: {{index . 0 \"target_temperature\"}}"
+      }
+    }
+  ]
+}

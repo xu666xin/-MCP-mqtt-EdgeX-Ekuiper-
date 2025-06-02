@@ -1,0 +1,11 @@
+{
+  "id": "create_classroom_stream",
+  "sql": "CREATE STREAM classroom_stream () WITH (FORMAT=\"JSON\", TYPE=\"edgex\")",
+  "actions": [
+    {
+      "log": {
+        "format": "Created stream classroom_stream with all device fields"
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+name: "classroom-devices"
+description: "简化智能教室设备配置文件"
+manufacturer: "EdgeX Classroom Demo"
+model: "ClassroomSuite-v1.0"
+labels:
+  - "classroom"
+  - "temperature"
+  - "humidity"
+  - "hvac"
+
+deviceResources:
+  - name: "temperature"
+    description: "教室温度传感器（摄氏度）"
+    attributes:
+      type: "float32"
+      min: "16.0"
+      max: "35.0"
+      defaultValue: "22.0"
+      units: "°C"
+    properties:
+      valueType: "Float32"
+      readWrite: "R"
+      minimum: "16.0"
+      maximum: "35.0"
+      floatEncoding: "eNotation"
+
+  - name: "humidity"
+    description: "教室湿度传感器（相对湿度）"
+    attributes:
+      type: "float32"
+      min: "30.0"
+      max: "80.0"
+      defaultValue: "50.0"
+      units: "%"
+    properties:
+      valueType: "Float32"
+      readWrite: "R"
+      minimum: "30.0"
+      maximum: "80.0"
+
+  - name: "ac_status"
+    description: "空调开关状态"
+    attributes:
+      type: "boolean"
+      defaultValue: "false"
+      # 添加这个属性来固定值
+      enableRandomization_Bool: "false"
+    properties:
+      valueType: "Bool"
+      readWrite: "RW"
+
+  - name: "target_temperature"
+    description: "空调目标温度"
+    attributes:
+      type: "float32"
+      min: "18.0"
+      max: "28.0"
+      defaultValue: "24.0"
+      units: "°C"
+      # 添加这个属性来固定值
+      enableRandomization_Bool: "false"
+    properties:
+      valueType: "Float32"
+      readWrite: "RW"
+      minimum: "18.0"
+      maximum: "28.0"
+
+coreCommands:
+  - name: "temperature"
+    get: true
+    set: false
+
+  - name: "humidity"
+    get: true
+    set: false
+
+  - name: "ac_status"
+    get: true
+    set: true
+
+  - name: "target_temperature"
+    get: true
+    set: true

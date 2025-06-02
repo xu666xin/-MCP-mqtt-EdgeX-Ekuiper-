@@ -1,0 +1,22 @@
+{
+  "id": "ac_power_status",
+  "sql": "SELECT ac_status FROM classroom_stream WHERE ac_status = true OR ac_status = false",
+  "actions": [
+    {
+      "mqtt": {
+        "server": "ssl://zd89891c.ala.cn-hangzhou.emqxsl.cn:8883",
+        "topic": "classroom/ac/power/status",
+        "username": "xu666xin",
+        "password": "123456",
+        "protocolVersion": "3.1.1",
+        "insecureSkipVerify": true,
+        "dataTemplate": "{\"device_id\": \"classroom-ac\", \"power\": {{index . 0 \"ac_status\"}}, \"status\": {{index . 0 \"ac_status\"}}, \"timestamp\": \"{{now}}\"}"
+      }
+    },
+    {
+      "log": {
+        "format": "AC power status sent: {{.ac_status}}"
+      }
+    }
+  ]
+}

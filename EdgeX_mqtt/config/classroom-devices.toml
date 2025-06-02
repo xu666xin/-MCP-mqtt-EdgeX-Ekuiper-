@@ -1,0 +1,53 @@
+# 简化智能教室虚拟设备配置
+# 用于 EdgeX Device Virtual Service
+
+[[DeviceList]]
+Name = "classroom-temp-sensor"
+ProfileName = "classroom-devices"
+Description = "教室温度传感器"
+Labels = [ "temperature", "classroom", "sensor" ]
+[DeviceList.Protocols]
+[DeviceList.Protocols.virtual]
+Address = "classroom-temp-sensor"
+
+# 自动事件：每15秒读取一次温度
+[[DeviceList.AutoEvents]]
+Interval = "15s"
+OnChange = false
+SourceName = "temperature"
+
+[[DeviceList]]
+Name = "classroom-humidity-sensor"
+ProfileName = "classroom-devices"
+Description = "教室湿度传感器"
+Labels = [ "humidity", "classroom", "sensor" ]
+[DeviceList.Protocols]
+[DeviceList.Protocols.virtual]
+Address = "classroom-humidity-sensor"
+
+# 自动事件：每20秒读取一次湿度
+[[DeviceList.AutoEvents]]
+Interval = "20s"
+OnChange = false
+SourceName = "humidity"
+
+[[DeviceList]]
+Name = "classroom-ac-controller"
+ProfileName = "classroom-devices"
+Description = "教室空调控制器"
+Labels = [ "hvac", "classroom", "controller" ]
+[DeviceList.Protocols]
+[DeviceList.Protocols.virtual]
+Address = "classroom-ac-controller"
+
+# 自动事件：每30秒定期检查空调状态
+[[DeviceList.AutoEvents]]
+Interval = "30s"
+OnChange = false
+SourceName = "ac_status"
+
+# 自动事件：每30秒定期报告目标温度（用于监控）
+[[DeviceList.AutoEvents]]
+Interval = "30s"
+OnChange = false
+SourceName = "target_temperature"
