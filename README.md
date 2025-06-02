@@ -153,14 +153,3 @@ Intelligent-Classroom-Temperature-Monitoring-System/
 - **EdgeX与eKuiper模块**: 请参考 `EdgeX_mqtt/README.md`
 - **EMQX MCP Server模块**: 请参考 `emqx-mcp-server-main/README.md`
 
-## 🤝 贡献
-
-欢迎提交问题、建议和代码贡献！
-
-## 📄 开源协议
-
-本项目基于特定开源协议，详情请查看各子模块的LICENSE文件。
-
----
-**版本**: 1.0
-**最后更新**: 2025年6月2日
