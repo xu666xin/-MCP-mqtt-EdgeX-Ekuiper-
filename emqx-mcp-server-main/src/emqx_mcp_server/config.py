@@ -25,11 +25,11 @@ EMQX_USERNAME = os.getenv("EMQX_USERNAME", "")  # MQTT username
 EMQX_PASSWORD = os.getenv("EMQX_PASSWORD", "")  # MQTT password
 EMQX_USE_SSL = os.getenv("EMQX_USE_SSL", "false").lower() == "true"  # Enable SSL/TLS
 
-# Smart Classroom specific configuration
+# Temperature Control System specific configuration
 CLASSROOM_ID = os.getenv("CLASSROOM_ID", "classroom_01")  # Default classroom ID
 CLASSROOM_TOPIC_PREFIX = os.getenv("CLASSROOM_TOPIC_PREFIX", "classroom")  # Topic prefix for classroom messages
 
-# Smart Classroom tool configuration
+# Temperature Control tool configuration
 MESSAGE_HISTORY_SIZE = int(os.getenv("MESSAGE_HISTORY_SIZE", "20"))  # Number of messages to keep in history
 AC_TEMP_MIN = float(os.getenv("AC_TEMP_MIN", "18"))  # Minimum AC temperature (°C)
 AC_TEMP_MAX = float(os.getenv("AC_TEMP_MAX", "28"))  # Maximum AC temperature (°C)

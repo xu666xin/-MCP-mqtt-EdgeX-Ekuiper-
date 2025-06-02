@@ -1,5 +1,5 @@
 name: "classroom-devices"
-description: "简化智能教室设备配置文件"
+description: "温度控制设备配置文件"
 manufacturer: "EdgeX Classroom Demo"
 model: "ClassroomSuite-v1.0"
 labels:

@@ -1,4 +1,4 @@
-# 智能教室空调状态查询架构设计
+# 温度控制系统空调状态查询架构设计
 
 ## 概述
 
@@ -9,11 +9,11 @@
 ### 1. 控制流 (AC Control Stream)
 
 - **输入源**: MQTT 主题 `classroom/control/ac`
-- **数据流向**: Smart Classroom Tools → MQTT → eKuiper → EdgeX
+- **数据流向**: Temperature Control Tools → MQTT → eKuiper → EdgeX
 - **功能**: 处理空调开关和温度设置命令
 
 ```
-Smart Classroom Tools 
+Temperature Control Tools 
     ↓ (发送控制命令)
 MQTT Topic: classroom/control/ac
     ↓
@@ -25,7 +25,7 @@ EdgeX Device Service
 ### 2. 状态查询流 (AC Status Stream)
 
 - **输入源**: EdgeX Events
-- **数据流向**: EdgeX → eKuiper → MQTT → Smart Classroom Tools
+- **数据流向**: EdgeX → eKuiper → MQTT → Temperature Control Tools
 - **功能**: 当收到状态请求时，从 EdgeX 获取设备状态并转发到 MQTT
 
 ```
@@ -82,18 +82,18 @@ Smart Classroom Tools (接收状态)
 
 ### 空调控制流程
 
-1. Smart Classroom Tools 发送控制命令到 `classroom/control/ac`
+1. Temperature Control Tools 发送控制命令到 `classroom/control/ac`
 2. eKuiper 接收命令并解析
 3. eKuiper 调用 EdgeX REST API 执行设备操作
 4. eKuiper 发送操作状态到对应的状态主题
 
 ### 状态查询流程
 
-1. Smart Classroom Tools 发送状态请求到 `classroom/request/status`
+1. Temperature Control Tools 发送状态请求到 `classroom/request/status`
 2. eKuiper 接收请求并触发 EdgeX 设备读取
 3. EdgeX 返回设备当前状态
 4. eKuiper 将状态数据转发到 MQTT 状态主题
-5. Smart Classroom Tools 从状态主题接收最新状态
+5. Temperature Control Tools 从状态主题接收最新状态
 
 ## 主题映射
 

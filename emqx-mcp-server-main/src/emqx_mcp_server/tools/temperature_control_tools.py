@@ -1,7 +1,7 @@
 """
-简化智能教室控制工具模块
+简化温度控制工具模块
 
-提供核心的教室设备控制功能：
+提供核心的环境设备控制功能：
 - 获取温度数据
 - 获取湿度数据  
 - 控制空调开关
@@ -20,16 +20,16 @@ from ..config import (EMQX_BROKER_HOST, EMQX_BROKER_PORT, EMQX_USERNAME, EMQX_PA
                      EMQX_USE_SSL, MESSAGE_HISTORY_SIZE, AC_TEMP_MIN, AC_TEMP_MAX, 
                      MQTT_KEEPALIVE, CLASSROOM_TOPIC_PREFIX)
 
-class SmartClassroomTools:
+class TemperatureControlTools:
     """
-    智能教室设备控制工具类
+    温度控制设备控制工具类
     
-    提供教室温湿度数据获取和空调控制功能。
+    提供环境温湿度数据获取和空调控制功能。
     """
     
     def __init__(self, logger: logging.Logger):
         """
-        初始化智能教室工具
+        初始化温度控制工具
         
         Args:
             logger: 日志记录器实例
@@ -54,17 +54,17 @@ class SmartClassroomTools:
         """MQTT连接回调"""
         if rc == 0:
             self.mqtt_connected = True
-            self.logger.info("Smart Classroom MQTT client connected")
+            self.logger.info("Temperature Control MQTT client connected")
             # 自动订阅传感器数据主题
             client.subscribe(self.topics["temperature"])
             client.subscribe(self.topics["humidity"])
             # 订阅空调状态主题
             client.subscribe(self.topics["ac_power_status"])
             client.subscribe(self.topics["ac_temperature_status"])
-            self.logger.info("Subscribed to all classroom sensor and AC status topics")
+            self.logger.info("Subscribed to all temperature control sensor and AC status topics")
         else:
             self.mqtt_connected = False
-            self.logger.error(f"Smart Classroom MQTT connection failed: {rc}")
+            self.logger.error(f"Temperature Control MQTT connection failed: {rc}")
     
     def _on_message(self, client, userdata, msg):
         """接收消息回调"""
@@ -94,7 +94,7 @@ class SmartClassroomTools:
         if self.mqtt_client is None:
             try:
                 # 创建客户端时加上时间戳避免冲突
-                client_id = f"smart_classroom_{datetime.now().strftime('%H%M%S')}"
+                client_id = f"temperature_control_{datetime.now().strftime('%H%M%S')}"
                 self.mqtt_client = mqtt.Client(client_id=client_id)
                 
                 # 设置认证
@@ -116,7 +116,7 @@ class SmartClassroomTools:
                 # 使用完全异步连接，不等待连接结果
                 self.mqtt_client.connect_async(EMQX_BROKER_HOST, EMQX_BROKER_PORT, MQTT_KEEPALIVE)
                 self.mqtt_client.loop_start()
-                self.logger.info("Smart Classroom MQTT client setup initiated (fully async)")
+                self.logger.info("Temperature Control MQTT client setup initiated (fully async)")
                 return True
             except Exception as e:
                 self.logger.error(f"Failed to setup MQTT client: {str(e)}")
@@ -125,7 +125,7 @@ class SmartClassroomTools:
         return True
 
     def register_tools(self, mcp: Any):
-        """注册简化的智能教室工具"""
+        """注册简化的温度控制工具"""
         
         @mcp.tool(name="get_temperature", 
                   description="获取教室当前温度")

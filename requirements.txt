@@ -1,5 +1,5 @@
-# 智能教室温度监控系统 - 整体项目依赖文件
-# Intelligent Classroom Temperature Monitoring System - Complete Project Dependencies
+# 温度控制系统 - 整体项目依赖文件
+# Temperature Control System - Complete Project Dependencies
 # 适用于整个系统：EdgeX + eKuiper + EMQX + MCP
 
 # ========================================

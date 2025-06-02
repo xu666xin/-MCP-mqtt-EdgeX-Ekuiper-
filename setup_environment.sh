@@ -1,8 +1,8 @@
 #!/bin/bash
-# 智能教室系统 - 快速环境设置脚本
-# Quick Environment Setup Script for Intelligent Classroom System
+# 温度控制系统 - 快速环境设置脚本
+# Quick Environment Setup Script for Temperature Control System
 
-echo "🏫 智能教室温度监控系统 - 环境设置"
+echo "🌡️ 温度控制系统 - 环境设置"
 echo "======================================"
 
 # 获取项目根目录
@@ -67,7 +67,7 @@ echo "1. 激活虚拟环境: source venv/bin/activate"
 echo "2. 配置 .env 文件: cd emqx-mcp-server-main && cp .env.example .env (然后编辑实际配置)"
 echo "3. 启动 MCP 服务器: cd emqx-mcp-server-main && python -m emqx_mcp_server"
 echo "4. 运行测试: cd emqx-mcp-server-main && python tests/test_server.py"
-echo "5. 运行演示: cd emqx-mcp-server-main && python demo_smart_classroom.py"
+echo "5. 运行演示: cd emqx-mcp-server-main && python demo_temperature_control.py"
 echo ""
 echo "🔗 相关命令:"
 echo "- 启动 EdgeX 系统: cd EdgeX_mqtt && ./scripts/start_classroom_system.sh"

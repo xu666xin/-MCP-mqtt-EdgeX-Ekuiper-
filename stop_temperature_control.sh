@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# 智能教室系统 - 一键关闭脚本
+# 温度控制系统 - 一键关闭脚本
 # 功能: 停止所有相关服务和进程
 
-echo "🛑 关闭智能教室温度监控系统..."
+echo "🛑 关闭温度控制系统..."
 echo "================================="
 
 # 设置项目路径
@@ -97,9 +97,9 @@ echo "  • Docker 容器: $(docker ps -q --filter 'name=edgex' | wc -l | tr -d 
 echo "  • 虚拟环境: $([ -n "$VIRTUAL_ENV" ] && echo '🔌 已激活' || echo '🔌 未激活')"
 
 echo ""
-echo "🎉 智能教室系统关闭完成！"
+echo "🎉 温度控制系统关闭完成！"
 echo ""
 echo "💡 提示:"
-echo "  • 如需重新启动系统: ./start_intelligent_classroom_v2.sh"
+echo "  • 如需重新启动系统: ./start_temperature_control_v2.sh"
 echo "  • 如需重新设置环境: ./setup_environment.sh"
 echo "  • 如需清理虚拟环境: rm -rf venv"

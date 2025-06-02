@@ -1,6 +1,6 @@
-# EdgeX MQTT 智能教室监控系统
+# EdgeX MQTT 温度控制系统
 
-本目录包含智能教室温度监控系统的EdgeX Foundry配置和相关组件，实现了基于EdgeX、eKuiper和EMQX Cloud的物联网数据处理架构。
+本目录包含温度控制系统的EdgeX Foundry配置和相关组件，实现了基于EdgeX、eKuiper和EMQX Cloud的物联网数据处理架构。
 
 ## 📁 目录结构
 

@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "emqx-temperature-control": {
+      "command": "/Users/a1-6/develop/作业/嵌入式/Intelligent Classroom Temperature Monitoring System/venv/bin/python",
+      "args": [
+        "-m", 
+        "emqx_mcp_server"
+      ],
+      "cwd": "/Users/a1-6/develop/作业/嵌入式/Intelligent Classroom Temperature Monitoring System/emqx-mcp-server-main",
+      "env": {
+        "PYTHONPATH": ".",
+        "EMQX_API_URL": "https://zd89891c.ala.cn-hangzhou.emqxsl.cn:8443/api/v5",
+        "EMQX_API_KEY": "e62f119f",
+        "EMQX_API_SECRET": "ONA*4w!yZ*q93!KL",
+        "EMQX_BROKER_HOST": "zd89891c.ala.cn-hangzhou.emqxsl.cn",
+        "EMQX_BROKER_PORT": "8883",
+        "EMQX_USERNAME": "xu666xin",
+        "EMQX_PASSWORD": "123456",
+        "EMQX_USE_SSL": "true",
+        "CLASSROOM_ID": "classroom_01",
+        "CLASSROOM_TOPIC_PREFIX": "classroom"
+      }
+    }
+  }
+}

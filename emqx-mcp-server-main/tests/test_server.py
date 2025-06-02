@@ -47,10 +47,10 @@ def test_tool_imports():
         return False
     
     try:
-        from emqx_mcp_server.tools.smart_classroom_tools import SmartClassroomTools
-        print("✅ 智能教室工具导入成功")
+        from emqx_mcp_server.tools.temperature_control_tools import TemperatureControlTools
+        print("✅ 温度控制工具导入成功")
     except Exception as e:
-        print(f"❌ 智能教室工具导入失败: {e}")
+        print(f"❌ 温度控制工具导入失败: {e}")
         return False
     
     return True
@@ -59,12 +59,12 @@ def list_available_tools():
     """列出可用工具"""
     print("\n📋 新增的MCP工具功能:")
     
-    print("\n🌡️ 智能教室工具:")
-    print("  • get_classroom_status - 获取教室状态概览")
-    print("  • control_classroom_ac - 控制教室空调")
-    print("  • analyze_temperature_trend - 分析温度趋势")
-    print("  • send_classroom_alert - 发送教室警报")
-    print("  • get_classroom_devices - 获取设备列表")
+    print("\n🌡️ 温度控制工具:")
+    print("  • get_temperature - 获取环境温度")
+    print("  • get_humidity - 获取环境湿度")
+    print("  • set_ac_power - 控制空调开关")
+    print("  • set_ac_temperature - 设置空调目标温度")
+    print("  • get_ac_status - 获取空调状态")
     
     print("\n📡 MQTT订阅工具:")
     print("  • subscribe_mqtt_topic - 订阅MQTT主题")

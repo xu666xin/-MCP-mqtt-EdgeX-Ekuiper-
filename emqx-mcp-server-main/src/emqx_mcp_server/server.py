@@ -11,7 +11,7 @@ from mcp.server.fastmcp import FastMCP
 from .tools.emqx_message_tools import EMQXMessageTools
 from .tools.emqx_client_tools import EMQXClientTools
 from .tools.emqx_subscription_tools import EMQXSubscriptionTools
-from .tools.smart_classroom_tools import SmartClassroomTools
+from .tools.temperature_control_tools import TemperatureControlTools
 
 class EMQXMCPServer:
     """
@@ -60,8 +60,8 @@ class EMQXMCPServer:
         self.logger.info("EMQX subscription tools registered")
         
         # Register smart classroom tools
-        smart_classroom_tools = SmartClassroomTools(self.logger)
-        smart_classroom_tools.register_tools(self.mcp)
+        temperature_control_tools = TemperatureControlTools(self.logger)
+        temperature_control_tools.register_tools(self.mcp)
         self.logger.info("Smart classroom tools registered")
 
     def run(self):

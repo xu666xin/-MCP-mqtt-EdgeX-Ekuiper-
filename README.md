@@ -1,6 +1,6 @@
-# 智能教室温度监控系统
+# 温度控制系统
 
-本项目是一个基于物联网技术的智能教室环境监控和控制系统，旨在通过实时监测教室的温度和湿度，并结合AI能力，实现对空调等设备的智能控制，从而营造舒适、节能的教学环境。
+本项目是一个基于物联网技术的环境温度监控和控制系统，旨在通过实时监测环境的温度和湿度，并结合AI能力，实现对空调等设备的智能控制，从而营造舒适、节能的环境。
 
 ## 🌟 项目特色
 
@@ -71,7 +71,7 @@ graph TB
 ## 📁 项目结构
 
 ```
-Intelligent-Classroom-Temperature-Monitoring-System/
+Temperature-Control-System/
 ├── EdgeX_mqtt/                   # EdgeX Foundry, eKuiper及相关配置和脚本
 │   ├── docker-compose.yml        # EdgeX服务编排
 │   ├── config/                   # 设备档案、虚拟设备、eKuiper源配置
@@ -84,9 +84,9 @@ Intelligent-Classroom-Temperature-Monitoring-System/
 │   └── README.md                 # MCP服务器模块详细说明
 ├── requirements.txt              # Python项目依赖 (主要用于MCP Server)
 ├── setup_environment.sh          # 环境初始化脚本 (创建虚拟环境、安装依赖)
-├── start_intelligent_classroom_v2.sh # 一键启动整个系统脚本
+├── start_temperature_control_v2.sh # 一键启动整个系统脚本
 ├── start_mcp_server.sh           # 单独启动MCP服务器脚本
-├── stop_intelligent_classroom.sh # 停止所有系统组件脚本
+├── stop_temperature_control.sh # 停止所有系统组件脚本
 └── README.md                     # 本文件 - 项目总览
 ```
 
@@ -117,7 +117,7 @@ Intelligent-Classroom-Temperature-Monitoring-System/
 此脚本会依次启动EdgeX Foundry容器、初始化eKuiper规则，并启动MCP服务器：
 
 ```bash
-./start_intelligent_classroom_v2.sh
+./start_temperature_control_v2.sh
 ```
 
 ### 4. 验证系统运行
@@ -129,7 +129,7 @@ Intelligent-Classroom-Temperature-Monitoring-System/
 
 ### 5. 与AI模型交互
 
-在Claude Desktop中配置并连接到本地运行的MCP Server，即可通过AI模型与智能教室系统进行交互，例如：
+在Claude Desktop中配置并连接到本地运行的MCP Server，即可通过AI模型与温度控制系统进行交互，例如：
 
 - "获取当前教室温度。"
 - "把空调打开。"
@@ -138,7 +138,7 @@ Intelligent-Classroom-Temperature-Monitoring-System/
 ### 6. 停止系统
 
 ```bash
-./stop_intelligent_classroom.sh
+./stop_temperature_control.sh
 ```
 
 ## ⚙️ 主要配置
@@ -146,7 +146,7 @@ Intelligent-Classroom-Temperature-Monitoring-System/
 - **EdgeX设备配置**: `EdgeX_mqtt/config/classroom-device-profile.yaml` 和 `EdgeX_mqtt/config/classroom-devices.toml`
 - **eKuiper规则**: `EdgeX_mqtt/rules/` 目录下的JSON文件
 - **MCP服务器配置**: `emqx-mcp-server-main/.env` 和 `emqx-mcp-server-main/src/emqx_mcp_server/config.py`
-- **Claude Desktop连接配置**: `emqx-mcp-server-main/config/claude_desktop_config_classroom.json`
+- **Claude Desktop连接配置**: `emqx-mcp-server-main/config/claude_desktop_config_temperature_control.json`
 
 ## 📖 详细文档
 
