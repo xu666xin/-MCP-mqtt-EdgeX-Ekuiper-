@@ -133,7 +133,7 @@ if [ "$MCP_RUNNING" = true ]; then
     echo "   日志文件: $LOG_FILE"
     echo "   启动脚本: $MCP_START_SCRIPT"
 else
-    echo "❌ MCP服务器启动失败。请检查日志: $LOG_FILE"
+    echo " MCP服务器启动。请检查日志: $LOG_FILE"
     echo "   尝试查看日志内容："
     echo "   tail -10 $LOG_FILE"
     # MCP服务器启动失败是一个严重问题，可以选择在这里退出

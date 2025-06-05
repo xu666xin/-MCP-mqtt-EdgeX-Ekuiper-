@@ -1,15 +1,14 @@
 # 温度控制系统
 
-本项目是一个基于物联网技术的环境温度监控和控制系统，旨在通过实时监测环境的温度和湿度，并结合AI能力，实现对空调等设备的智能控制，从而营造舒适、节能的环境。
+本项目是一个基于edgex、mqtt、emqx-mcp-server的环境温度监控和空调控制系统，旨在通过cline客户端查询获知环境的温度和湿度，获取空调的状态，并且实现对空调的智能控制。
 
-## 🌟 项目特色
+## 🌟 项目特点
 
-- **实时监控**: 实时采集教室温度、湿度数据。
-- **智能控制**: 通过MCP Server与AI模型（如Claude）集成，实现对空调的智能控制。
-- **边缘计算**: 利用EdgeX Foundry和eKuiper在边缘端处理数据和执行规则。
-- **云端协同**: 借助EMQX Cloud实现可靠的消息传递和远程访问。
+- **虚拟设备**: 通过在classroom-device-profile.yaml配置文件，在EdgeX上注册虚拟设备，包括温度监控器、湿度监控器、空调三个虚拟设备，来获取相应的设备数据与状态。
+- **智能控制**: 通过emqx-mcp-server与Cline，实现对空调的智能控制以及温度湿度的获取。由于原版的emqx-mcp-server只提供了基础工具，并不能实现项目功能，因此我在对应模块添加注册了几个工具，包括`get_temperature`，`get_humidity`，`get_ac_status`，`set_ac_power`，`set_ac_temperature`。
+- **数据传输**: 使用eKuiper的过滤规则处理数据。本项目定义了两个流，分别从edgex和mqtt主题获取数据，并以此定义了对应的规则来进行查询和控制。
+- **云端协同**: 借助EMQX Cloud作为mqtt broker实现可靠的消息传递。
 - **模块化设计**: 系统分为EdgeX物联网处理模块和MCP服务器AI交互模块。
-- **易于部署**: 提供完整的Docker Compose配置和启动脚本。
 
 ## 🏗️ 系统架构
 
@@ -34,7 +33,7 @@ graph TB
     
     subgraph ai ["🤖 AI控制层"]
         G["MCP Server<br/>模型上下文协议"]
-        H["Claude Desktop<br/>AI助手"]
+        H["Cline Desktop<br/>AI助手"]
     end
     
     A -->|数据采集| B
@@ -66,7 +65,7 @@ graph TB
     - `EMQX Cloud`: 作为MQTT Broker，负责边缘与MCP服务器之间的消息传递。
 4. **应用/AI层**:
     - `EMQX MCP Server`: 实现Model Context Protocol，作为AI模型与教室环境交互的桥梁。
-    - `AI模型 (如Claude)`: 分析数据，做出智能决策，通过MCP Server下发控制指令。
+    - `AI模型 (如Cline)`: 分析数据，做出智能决策，通过MCP Server下发控制指令。
 
 ## 📁 项目结构
 
@@ -152,4 +151,3 @@ Temperature-Control-System/
 
 - **EdgeX与eKuiper模块**: 请参考 `EdgeX_mqtt/README.md`
 - **EMQX MCP Server模块**: 请参考 `emqx-mcp-server-main/README.md`
-

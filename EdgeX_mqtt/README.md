@@ -13,11 +13,6 @@ EdgeX_mqtt/
 │   ├── classroom-device-profile.yaml  # 教室设备档案配置
 │   ├── classroom-devices.toml         # 虚拟设备配置
 │   └── mqtt_source.yaml              # MQTT数据源配置
-├── docs/                           # 文档目录
-│   ├── AC_CONTROL_RULES.md           # 空调控制规则说明
-│   ├── AC_STATUS_ARCHITECTURE.md    # 空调状态架构文档
-│   ├── EKUIPER_EMQX_CLOUD_FIX.md    # eKuiper-EMQX Cloud修复指南
-│   └── EMQX_CLOUD_CONFIG.md         # EMQX Cloud配置说明
 ├── rules/                          # eKuiper规则配置
 │   ├── ac_power_control.json         # 空调电源控制规则
 │   ├── ac_power_status.json          # 空调电源状态转发规则
